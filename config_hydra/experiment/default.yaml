@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - /trainer/callbacks: default
+  - /task/model/block: preact_bottleneck
+  - /task/model/act_fn: selu
+  - /task/model/norm_layer: batchnorm2d
+  - /task/optimizer: sgd
+  - _self_
+
+trainer:
+  max_epochs: 10
+
+task:
+  model:
+    start_planes: 32
+    num_blocks: [3, 3, 3]
+    zero_init_residual: False
+    groups: 1
+    width_factor: 1
+  lr: 0.01
+  optimizer:
+    momentum: 0.9
+    weight_decay: 1e-3
+
+datamodule:
+  batch_size: 128
+  transform:
+    _target_: torchvision.transforms.ToTensor
+
+compile_mode: False
+auto_lr_find: False
+test: False
+seed: 10
+

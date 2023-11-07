@@ -1,0 +1,8 @@
+# @package trainer
+
+defaults:
+  - .@_callback_dict.ms: model_summary
+  - .@_callback_dict.mc: model_checkpoint
+  - _self_
+
+callbacks: ${oc.dict.values:._callback_dict}

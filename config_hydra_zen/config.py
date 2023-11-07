@@ -13,7 +13,7 @@ Config = full_builds(
         {'task': 'ClassificationTask'},
         {'task/model': 'ResNet'},
         {'datamodule': 'FashionMNISTDataModule'},
-        {'experiment': 'hparam_search'}
+        {'experiment': 'default'}
     ],
     datamodule=dict(
         val_fraction=0.1

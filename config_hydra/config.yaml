@@ -1,0 +1,15 @@
+defaults:
+  - _self_
+  - trainer: default
+  - trainer/logger: tb
+  - task: classification
+  - task/model: resnet
+  - datamodule: fashion_mnist
+  - experiment: hparam_search
+
+monitor: 'MulticlassAccuracy'
+mode: 'max'
+num_classes: 10
+
+datamodule:
+  val_fraction: 0.1

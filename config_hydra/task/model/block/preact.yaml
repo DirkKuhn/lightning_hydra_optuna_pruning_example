@@ -1,0 +1,2 @@
+_target_: hydra.utils.get_class
+path: models.PreActResNetBlock

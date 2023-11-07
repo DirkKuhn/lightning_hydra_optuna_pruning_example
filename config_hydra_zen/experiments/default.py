@@ -15,13 +15,13 @@ experiment_store(
             '_self_'
         ],
         trainer=dict(
-            max_epochs=1
+            max_epochs=5
         ),
         task=dict(
             model=dict(
-                start_planes=16,
-                block=just(PreActResNetBlock),
-                num_blocks=[4, 1],
+                start_planes=32,
+                block=just(PreActBottleneckResNetBlock),
+                num_blocks=[3, 3, 3],
                 zero_init_residual=False,
                 groups=1,
                 width_factor=1,

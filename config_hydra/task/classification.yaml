@@ -1,0 +1,3 @@
+_target_: tasks.ClassificationTask
+num_classes: ${num_classes}
+input_dim: [1, 28, 28]

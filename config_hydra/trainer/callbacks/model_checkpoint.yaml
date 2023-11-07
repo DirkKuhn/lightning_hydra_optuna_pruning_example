@@ -1,0 +1,8 @@
+_target_: pytorch_lightning.callbacks.ModelCheckpoint
+dirpath: '${hydra:runtime.output_dir}/checkpoints'
+filename: '{epoch}_{step}'
+monitor: 'val/${monitor}'
+save_top_k: 1
+mode: '${mode}'
+every_n_epochs: 1
+save_last: False

@@ -5,6 +5,7 @@ from torchvision import transforms
 
 from ..config import Config
 from ..utils import full_builds, experiment_store
+from ..model import PreActBottleneckResNetBlock
 
 
 experiment_store(
@@ -22,6 +23,7 @@ experiment_store(
         ),
         task=dict(
             model=dict(
+                block=just(PreActBottleneckResNetBlock),
                 groups=1,
                 width_factor=1,
                 norm_layer=just(nn.BatchNorm2d)
@@ -40,16 +42,15 @@ experiment_store(
             ),
             sweeper=dict(
                 sampler=dict(
-                    seed=10
+                    seed=123
                 ),
                 direction='maximize',
-                storage=None,
+                storage='sqlite:///${.study_name}.db',
                 study_name='resnet',
                 n_trials=10,
                 n_jobs=1,
                 params={
                     '+task.model.start_planes': 'tag("16", range(8, 64))',
-                    '+task/model/block': 'tag(PreActBottleneckResNetBlock, choice(PreActResNetBlock, PreActBottleneckResNetBlock))',
                     'task.model.zero_init_residual': 'tag("false", choice(false, true))',
                     '+task/model/act_fn': 'tag(ReLU, choice(ReLU, LeakyReLU, SELU, Mish))',
                     '+task.lr': 'tag("0.01", log, interval(1e-4, 0.05))',

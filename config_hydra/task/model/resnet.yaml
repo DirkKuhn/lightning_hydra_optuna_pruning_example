@@ -1,0 +1,2 @@
+_target_: models.ResNet
+num_classes: ${num_classes}

@@ -1,0 +1,58 @@
+# @package _global_
+
+defaults:
+  - /trainer/callbacks: pruning
+  - /task/model/block: preact_bottleneck
+  - /task/model/norm_layer: batchnorm2d
+  - /task/optimizer: sgd
+  - /hydra/sweeper/sampler: TPESampler
+  - /hydra/sweeper/pruner: HyperbandPruner
+  - override /hydra/sweeper: OptunaPruningSweeper
+  - _self_
+
+trainer:
+  max_epochs: 2
+
+task:
+  model:
+    groups: 1
+    width_factor: 1
+
+datamodule:
+  transform:
+    _target_: torchvision.transforms.ToTensor
+
+compile_mode: False
+auto_lr_find: False
+test: False
+seed: 10
+
+hydra:
+  sweep:
+    dir: 'optuna/${..sweeper.study_name}'
+  sweeper:
+    sampler:
+      seed: 123
+    direction: 'maximize'
+    storage: 'sqlite:///optuna/${.study_name}/study.db'
+    study_name: 'resnet'
+    n_trials: 100
+    n_jobs: 1
+    params:
+      +task.model.start_planes: tag("32", range(20, 80))
+      +task.model.zero_init_residual: tag("false", choice(false, true))
+      +task/model/act_fn: tag(relu, choice(relu, leaky_relu, selu, mish))
+      +task.lr: tag("0.01", log, interval(1e-4, 0.05))
+      +optimizer.momentum: tag("0.9", interval(0.5, 1))
+      +optimizer.weight_decay: tag("1e-3", log, interval(1e-5, 1e-2))
+      +datamodule.batch_size: tag("128", range(64, 256))
+    custom_search_space:
+      _target_: hydra_plugins.hydra_optuna_pruning_sweeper.ListSearchSpace
+      name: '+task.model.num_blocks'
+      min_entries: 2
+      max_entries: 4
+      min_value: 2
+      max_value: 4
+      use_float: false
+      manual_values: [[3, 3, 3]]
+    gc_after_trial: true

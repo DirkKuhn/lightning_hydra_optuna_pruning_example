@@ -1,0 +1,3 @@
+_target_: optuna.integration.PyTorchLightningPruningCallback
+monitor: 'val/${monitor}'
+trial: null

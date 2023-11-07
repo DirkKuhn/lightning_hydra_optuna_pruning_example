@@ -1,0 +1,3 @@
+_target_: datamodules.FashionMNISTDataModule
+data_dir:
+  _target_: os.getcwd
