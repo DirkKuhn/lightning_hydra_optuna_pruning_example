@@ -47,7 +47,7 @@ experiment_store(
                 direction='maximize',
                 storage='sqlite:///${.study_name}.db',
                 study_name='resnet',
-                n_trials=10,
+                n_trials=100,
                 n_jobs=1,
                 params={
                     '+task.model.start_planes': 'tag("16", range(8, 64))',
