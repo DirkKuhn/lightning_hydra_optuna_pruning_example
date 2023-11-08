@@ -5,7 +5,7 @@ It shows how more complicated experiments can be configured with [hydra](https:/
 [hydra-zen](https://mit-ll-responsible-ai.github.io/hydra-zen/).
 [Pytorch-Lightning](https://lightning.ai/docs/pytorch/stable/) is used to avoid boilerplate for
 training the neural networks. This example also shows how the
-[``OptunaPruningSweeper``]
+[``OptunaPruningSweeper``](https://github.com/DirkKuhn/hydra_optuna_pruning_sweeper)
 can be used.
 
 To show a more complicated configuration a ResNet model is implemented adapted from
