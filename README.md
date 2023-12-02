@@ -1,6 +1,6 @@
 # Deep-learning example for OptunaPruningSweeper
 
-This example is adapted from https://github.com/optuna/optuna-examples/blob/main/pytorch/pytorch_lightning_simple.py.
+This example is adapted from an [official optuna example](https://github.com/optuna/optuna-examples/blob/main/pytorch/pytorch_lightning_simple.py).
 It shows how more complicated experiments can be configured with [hydra](https://hydra.cc/) or
 [hydra-zen](https://mit-ll-responsible-ai.github.io/hydra-zen/).
 [Pytorch-Lightning](https://lightning.ai/docs/pytorch/stable/) is used to avoid boilerplate for
@@ -29,5 +29,4 @@ been added to PyPI. Install it by cloning [this repository](https://github.com/D
 pip install PATH-TO-CLONED-REPOSITORY-OF-HYDRA-OPTUNA-PRUNING-SWEEPER
 ```
 
-If you are interested in a template for pytorch-lightning + hydra also take a look at
-https://github.com/ashleve/lightning-hydra-template.
+If you are interested in a template for pytorch-lightning + hydra also take a look at [this repository](https://github.com/ashleve/lightning-hydra-template).
