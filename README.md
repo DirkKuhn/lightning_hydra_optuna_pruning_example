@@ -14,8 +14,8 @@ ResNet blocks are used. The
 [``FashionMNIST``](https://pytorch.org/vision/stable/generated/torchvision.datasets.FashionMNIST.html#torchvision.datasets.FashionMNIST)
 dataset is used.
 
-The hydra specific code/configuration is located in ``run_hydra`` and ``config_hydra``.
-The code/configuration specific to hydra_zen can be found in ``run_hydra_zen`` and ``config_hydra_zen``.
+The hydra specific code/configuration is located in ``run_hydra.py`` and ``config_hydra``.
+The code/configuration specific to hydra_zen can be found in ``run_hydra_zen.py`` and ``config_hydra_zen``.
 
 ## Installation
 
