@@ -24,7 +24,7 @@ It is recommended to first create a virtual environment. In this environment ins
 pip install -r requirements.txt
 ```
 To run the hyperparameter optimization with pruning install the ``OptunaPruningSweeper``. This plugin has not yeet
-been added to PyPI. Install it by cloning the repository ... and execute in your virtual environment
+been added to PyPI. Install it by cloning [this repository](https://github.com/DirkKuhn/hydra_optuna_pruning_sweeper) and execute in your virtual environment
 ```
 pip install PATH-TO-CLONED-REPOSITORY-OF-HYDRA-OPTUNA-PRUNING-SWEEPER
 ```
